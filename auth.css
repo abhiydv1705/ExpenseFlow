@@ -1,0 +1,148 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #101a35, #172c50);
+    min-height: 100vh;
+    color: #172033;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 28px;
+}
+
+.brand-icon {
+    background: #5278f5;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+}
+
+.auth-card {
+    background: white;
+    width: 100%;
+    max-width: 440px;
+    padding: 38px;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.eyebrow {
+    color: #5278f5;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.auth-heading h1 {
+    font-size: 27px;
+    margin-bottom: 9px;
+}
+
+.auth-heading > p:last-child {
+    color: #7b8496;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 17px 0 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce1eb;
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+}
+
+form input:focus {
+    border-color: #5278f5;
+    box-shadow: 0 0 0 3px rgba(82,120,245,0.12);
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #5278f5;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.auth-button:hover {
+    background: #3e62df;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 13px;
+    color: #747d8e;
+    margin-top: 24px;
+}
+
+.auth-switch a {
+    color: #5278f5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.message {
+    font-size: 13px;
+    margin-top: 12px;
+    color: #dc3545;
+}
+
+.message.success {
+    color: #198754;
+}
+
+.auth-footer {
+    color: #aab5ca;
+    font-size: 12px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .auth-heading h1 {
+        font-size: 23px;
+    }
+}

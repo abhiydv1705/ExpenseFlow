@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseFlow | Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f5fb;
+            color: #172033;
+        }
+
+        header {
+            background: #17213b;
+            color: white;
+            padding: 35px 7%;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 8px 0;
+        }
+
+        header p {
+            color: #c2cbe0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #17213b12;
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #69758c;
+            line-height: 1.6;
+        }
+
+        .icon {
+            font-size: 42px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 20px;
+            background: #5368d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .trip-btn {
+            background: #178653;
+        }
+
+        footer {
+            text-align: center;
+            color: #69758c;
+            padding: 30px;
+        }
+        .user-welcome {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.user-welcome h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.user-welcome button {
+    background: #5368d9;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.user-welcome button:hover {
+    background: #4055c5;
+}
+
+        @media(max-width: 700px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+    const currentUser = JSON.parse(
+        localStorage.getItem("expenseflow_current_user") || "null"
+    );
+
+    if (!currentUser) {
+        window.location.href = "login.html";
+    }
+</script>
+
+
+<header>
+    <p>WELCOME TO</p>
+    <h1>₹ ExpenseFlow</h1>
+    <p>Your complete personal and group expense management system.</p>
+
+    <div class="user-welcome">
+        <h2>
+            Welcome, <span id="user-name">User</span>!
+        </h2>
+
+        <button onclick="logoutUser()">Logout</button>
+    </div>
+</header>
+
+
+<main>
+
+    <h2>Choose Your Workspace</h2>
+
+    <div class="cards">
+
+        <section class="card">
+            <div class="icon">💰</div>
+            <h2>Personal Expense Tracker</h2>
+            <p>
+                Track your income, daily expenses,
+                transaction history and spending analytics.
+            </p>
+            <a href="index.html" class="btn">
+                Open Personal Tracker →
+            </a>
+        </section>
+
+        <section class="card">
+            <div class="icon">👥</div>
+            <h2>Trip Expense Splitter</h2>
+            <p>
+                Create trips, add friends, split expenses
+                equally or custom-wise and calculate settlements.
+            </p>
+            <a href="trip.html" class="btn trip-btn">
+                Open Trip Splitter →
+            </a>
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+    ExpenseFlow © 2026 | Smart Expense Management
+</footer>
+<script>
+    const user = JSON.parse(
+        localStorage.getItem("expenseflow_current_user") || "null"
+    );
+
+    if (user) {
+        document.getElementById("user-name").textContent = user.name;
+    }
+
+    function logoutUser() {
+        localStorage.removeItem("expenseflow_current_user");
+        window.location.href = "login.html";
+    }
+</script>
+</body>
+</html>

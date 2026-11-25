@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Splitter | ExpenseFlow</title>
+
+    <link rel="stylesheet" href="trip.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">EXPENSEFLOW</p>
+            <h1>Trip Expense Splitter</h1>
+            <p class="muted">Manage group trips and split expenses.</p>
+        </div>
+
+        <a class="back-link" href="index.html">
+            ← Personal Tracker
+        </a>
+        <a class="back-link" href="home.html">
+    ⌂ Home
+</a>
+    </header>
+
+    <main class="wrap">
+
+        <!-- CREATE TRIP -->
+        <section class="panel">
+
+            <h2>Create a Trip</h2>
+
+            <form id="trip-form" class="inline-form">
+
+                <input
+                    id="trip-name"
+                    type="text"
+                    placeholder="Trip name (e.g. Manali Trip)"
+                    required
+                >
+
+                <input
+                    id="trip-date"
+                    type="date"
+                    required
+                >
+
+                <button type="submit">Create Trip</button>
+
+            </form>
+
+            <label for="trip-select">Select Trip</label>
+            <select id="trip-select"></select>
+
+            <p id="trip-meta" class="muted small"></p>
+
+        </section>
+
+        <p id="empty-state" class="empty">
+            Create a trip to get started.
+        </p>
+
+        <section id="trip-workspace" hidden>
+
+            <!-- SUMMARY -->
+            <div class="stats">
+
+                <article class="stat">
+                    <span>Total Expense</span>
+                    <strong id="total-expense">₹0.00</strong>
+                </article>
+
+                <article class="stat">
+                    <span>Total Members</span>
+                    <strong id="member-count">0</strong>
+                </article>
+
+                <article class="stat">
+                    <span>Total Expenses</span>
+                    <strong id="expense-count">0</strong>
+                </article>
+
+            </div>
+
+            <div class="two-col">
+
+                <!-- MEMBERS -->
+                <section class="panel">
+
+                    <h2>Trip Members</h2>
+
+                    <form id="member-form" class="inline-form">
+
+                        <input
+                            id="member-name"
+                            type="text"
+                            placeholder="Friend's name"
+                            required
+                        >
+
+                        <button type="submit">Add Friend</button>
+
+                    </form>
+
+                    <ul id="member-list" class="plain-list"></ul>
+
+                </section>
+
+                <!-- ADD EXPENSE -->
+                <section class="panel">
+
+                    <h2>Add Trip Expense</h2>
+
+                    <form id="expense-form">
+
+                        <label for="expense-title">
+                            Expense Name
+                        </label>
+
+                        <input
+                            id="expense-title"
+                            type="text"
+                            placeholder="Hotel, Food, Cab..."
+                            required
+                        >
+
+                        <div class="form-grid">
+
+                            <div>
+                                <label for="expense-amount">
+                                    Amount (₹)
+                                </label>
+
+                                <input
+                                    id="expense-amount"
+                                    type="number"
+                                    min="0.01"
+                                    step="0.01"
+                                    placeholder="2500"
+                                    required
+                                >
+                            </div>
+
+                            <div>
+                                <label for="paid-by">
+                                    Paid By
+                                </label>
+
+                                <select id="paid-by" required></select>
+                            </div>
+
+                        </div>
+
+                        <label for="split-type">
+                            Split Method
+                        </label>
+
+                        <select id="split-type">
+
+                            <option value="equal">
+                                Equal Split
+                            </option>
+
+                            <option value="custom">
+                                Custom Split
+                            </option>
+
+                        </select>
+
+                        <p class="muted small">
+                            Select members who should share this expense.
+                        </p>
+
+                        <div
+                            id="participant-list"
+                            class="participant-list"
+                        ></div>
+
+                        <div id="custom-area" hidden>
+
+                            <h3>Custom Share Amounts</h3>
+
+                            <div id="custom-inputs"></div>
+
+                            <p
+                                id="custom-total"
+                                class="muted small"
+                            >
+                                Custom total: ₹0.00
+                            </p>
+
+                        </div>
+
+                        <button type="submit" class="full">
+                            Save Expense
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+            <!-- EXPENSE HISTORY -->
+            <section class="panel">
+
+                <div class="section-heading">
+
+                    <h2>Trip Expenses</h2>
+
+                    <button
+                        id="delete-trip"
+                        class="danger-outline"
+                        type="button"
+                    >
+                        Delete Trip
+                    </button>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Expense</th>
+                                <th>Paid By</th>
+                                <th>Amount</th>
+                                <th>Members</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="expense-rows"></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- SETTLEMENT -->
+            <section class="panel">
+
+                <h2>Settlement Summary</h2>
+
+                <p class="muted small">
+                    Automatically calculate who owes whom.
+                </p>
+
+                <div id="balance-list" class="balance-list"></div>
+
+                <h3>Who Owes Whom?</h3>
+
+                <div id="settlement-list"></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="trip.js"></script>
+
+</body>
+</html>
